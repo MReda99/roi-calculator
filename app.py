@@ -73,7 +73,8 @@ def triangular(n, low, mode, high):
     mode = max(low, min(mode, high))  # Clamp mode between low and high
     return np.random.triangular(left=low, mode=mode, right=high, size=n)
 
-def dollars(x): return f"\\${x:,.0f}"
+def dollars(x): return f"${x:,.0f}"
+def dollars_latex(x): return f"\\${x:,.0f}"
 def pct(x): return f"{x*100:.1f}%"
 
 @dataclass
@@ -420,8 +421,8 @@ with tab_sens:
 st.markdown("---")
 st.subheader("What this means, in plain English")
 st.markdown(f"""
-- With **{inp.rule}** and **{inp.contacts_week:,} people/week** for **{inp.weeks} weeks**, the **median** path yields **{dollars(q_cap['p50'])}** committed and **{dollars(q_profit['p50'])}** after fees.
-- Even under a very conservative 5th-percentile case, profit is **{dollars(q_profit['p05'])}**.
+- With **{inp.rule}** and **{inp.contacts_week:,} people/week** for **{inp.weeks} weeks**, the **median** path yields **{dollars_latex(q_cap['p50'])}** committed and **{dollars_latex(q_profit['p50'])}** after fees.
+- Even under a very conservative 5th-percentile case, profit is **{dollars_latex(q_profit['p05'])}**.
 - The chance of breaking even or better is **{pct(breakeven_prob)}**.
 - Phase 2–3 are **optional** and treated strictly as additive lift ('gravy'). Phase 0-1 alone is designed to stand on its own.
 """)
