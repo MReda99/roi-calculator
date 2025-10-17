@@ -1,0 +1,44 @@
+pricing:
+  echelon_fee_phase01: 4800
+  infra_cap_phase3: 1000
+  per_message_cost: 0.008
+
+financials:
+  avg_check_size: 250000
+  max_contacts_week: 100000
+
+bands:
+  open_mean: 0.32
+  open_low: 0.18
+  open_high: 0.48
+  reply_mean: 0.07
+  reply_low: 0.03
+  reply_high: 0.12
+  book_mean: 0.20
+  book_low: 0.08
+  book_high: 0.35
+  show_mean: 0.70
+  show_low: 0.50
+  show_high: 0.85
+  close_mean: 0.14
+  close_low: 0.05
+  close_high: 0.25
+  deliver_uplift_mean: 0.90
+  deliver_uplift_low: 0.80
+  deliver_uplift_high: 0.96
+
+phase_multipliers:
+  phase2:
+    reply_mult: 1.20
+    book_mult: 1.25
+    show_mult: 1.05
+    close_mult: 1.00
+  phase3:
+    reply_mult: 1.10
+    book_mult: 1.10
+    show_mult: 1.05
+    close_mult: 1.00
+
+sim:
+  iterations: 100000
+  random_seed: 42

@@ -1,0 +1,5 @@
+/* Clean, readable tweaks */
+.block-container {max-width: 1200px !important;}
+.small-note {font-size: 0.9rem; color: #666;}
+.kpi {font-size: 1.6rem; font-weight: 700; margin-bottom: 0.25rem;}
+.kpi-sub {font-size: 0.9rem; color: #666; margin-top: -0.5rem;}
