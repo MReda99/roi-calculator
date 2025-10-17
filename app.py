@@ -419,10 +419,9 @@ with tab_sens:
 
 st.markdown("---")
 st.subheader("What this means, in plain English")
-st.write(
-    f"- With **{inp.rule}** and **{inp.contacts_week:,} people/week** for **{inp.weeks} weeks**, "
-    f"the **median** path yields **{dollars(q_cap['p50'])}** committed and **{dollars(q_profit['p50'])}** after fees.\n"
-    f"- Even under a very conservative 5th-percentile case, profit is **{dollars(q_profit['p05'])}**.\n"
-    f"- The chance of breaking even or better is **{pct(breakeven_prob)}**.\n"
-    f"- Phase 2–3 are **optional** and treated strictly as additive lift (“gravy”). Phase 0–1 alone is designed to stand on its own."
-)
+st.markdown(f"""
+- With **{inp.rule}** and **{inp.contacts_week:,} people/week** for **{inp.weeks} weeks**, the **median** path yields **{dollars(q_cap['p50'])}** committed and **{dollars(q_profit['p50'])}** after fees.
+- Even under a very conservative 5th-percentile case, profit is **{dollars(q_profit['p05'])}**.
+- The chance of breaking even or better is **{pct(breakeven_prob)}**.
+- Phase 2–3 are **optional** and treated strictly as additive lift ('gravy'). Phase 0–1 alone is designed to stand on its own.
+""")
