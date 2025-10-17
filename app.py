@@ -4,7 +4,6 @@
 
 import os
 import io
-import yaml
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
@@ -54,18 +53,8 @@ DEFAULT_CONFIG = {
 }
 
 def load_config():
-    cfg_path = os.getenv("SIM_CONFIG", "config.yaml")
-    if os.path.exists(cfg_path):
-        with open(cfg_path, "r") as f:
-            user_cfg = yaml.safe_load(f) or {}
-        # deep-merge user config
-        cfg = DEFAULT_CONFIG.copy()
-        for k, v in user_cfg.items():
-            if isinstance(v, dict) and k in cfg:
-                cfg[k].update(v)
-            else:
-                cfg[k] = v
-        return cfg
+    # For Streamlit Cloud deployment, just use defaults
+    # Config file loading removed to avoid yaml dependency issues
     return DEFAULT_CONFIG
 
 CFG = load_config()
