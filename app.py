@@ -3,7 +3,6 @@
 # Run: streamlit run app.py
 
 import os
-import io
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
@@ -325,15 +324,9 @@ with tab_funnel:
     st.subheader("Conservative / Median / Upside (5th / 50th / 95th percentiles)")
     st.dataframe(table, use_container_width=True)
 
-    # Exports
-    exp_col1, exp_col2 = st.columns(2)
-    with exp_col1:
-        csv = sim_df.to_csv(index=False).encode("utf-8")
-        st.download_button("Download raw simulation (CSV)", csv, "simulation.csv", "text/csv")
-    with exp_col2:
-        buf = io.BytesIO()
-        fig.write_image(buf, format="png")
-        st.download_button("Download funnel (PNG)", buf.getvalue(), "funnel.png", "image/png")
+    # Export simulation data
+    csv = sim_df.to_csv(index=False).encode("utf-8")
+    st.download_button("Download raw simulation (CSV)", csv, "simulation.csv", "text/csv")
 
 with tab_dist:
     st.subheader("Profit distribution")
@@ -377,7 +370,7 @@ with tab_scen:
 
     if inp.add_phase2 or inp.add_phase3:
         st.markdown("---")
-        st.subheader("Incremental lift from Phase 2–3 (“gravy”)")
+        st.subheader("Incremental lift from Phase 2–3 ('gravy')")
         base_inp = Inputs(**{**inp.__dict__, "add_phase2": False, "add_phase3": False})
         base_df, _, _ = run_sim(base_inp, bands, 50000)
         gravy_df, _, _ = run_sim(inp, bands, 50000)
